@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrowdLink</title>
-    <link rel="stylesheet" href="public/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPS Tracker</title>
+  <style>
+    /* Basic Reset and Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #map {
+      width: 100%;
+      height: calc(100% - 60px); /* Adjusting height for header */
+    }
+  </style>
 </head>
 <body>
-    <div class="banner">
-        <h1>CrowdLink</h1>
-    </div>
+  <header>
+    <h1>GPS Tracker</h1>
+  </header>
+  
+  <!-- Map Container -->
+  <div id="map"></div>
+  
+  <!-- Google Maps API and Initialization Script -->
+  <script>
+    // This function is called once the Google Maps API is loaded.
+    function initMap() {
+      // Set a default location (e.g., San Francisco)
+      const defaultLocation = { lat: 37.7749, lng: -122.4194 };
+      
+      // Create the map, centered at the default location.
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: defaultLocation,
+        zoom: 12,
+      });
+      
+      // Place a marker on the default location.
+      const marker = new google.maps.Marker({
+        position: defaultLocation,
+        map: map,
+      });
+    }
+  </script>
+  
+  <!-- Asynchronously load the Google Maps API -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwHpFrAwPKlYSSpwcFZx0XLY_GDUu4lX0&callback=initMap">
+  </script>
 </body>
 </html>
